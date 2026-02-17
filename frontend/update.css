@@ -418,47 +418,161 @@ tbody td { color: #2E2E2E !important; }
 
 /* ─────────────────────────────────────────────
    STEP 18: MODAL
+   Fixes: dark right-side scrollbar strip, all
+   backgrounds, header gradient accent bar, inputs
    ───────────────────────────────────────────── */
+
+/* Overlay backdrop — soft blue tint */
 .modal-overlay {
-  background: rgba(11,77,186,0.18) !important;
-  backdrop-filter: blur(6px) !important;
+  background: rgba(44, 82, 160, 0.22) !important;
+  backdrop-filter: blur(8px) !important;
 }
+
+/* Modal container — pure white, clean border */
 .modal {
   background: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
-  box-shadow: 0 40px 100px rgba(11,77,186,0.18) !important;
+  border: 1.5px solid #E2E8F0 !important;
+  box-shadow:
+    0 24px 64px rgba(11,77,186,0.16),
+    0 2px 12px rgba(0,0,0,0.06) !important;
+  border-radius: 20px !important;
+  /* Fix the dark scrollbar strip: override webkit scrollbar inside modal */
+  overflow-y: auto !important;
 }
+
+/* Modal inner scrollbar — brand gradient, no dark strip */
+.modal::-webkit-scrollbar {
+  width: 5px !important;
+}
+.modal::-webkit-scrollbar-track {
+  background: #F4F7FC !important;
+  border-radius: 0 20px 20px 0 !important;
+}
+.modal::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0B4DBA, #C86DD7) !important;
+  border-radius: 10px !important;
+}
+
+/* Modal header — white bg + gradient left accent bar */
 .modal-header {
   background: #FFFFFF !important;
-  border-bottom-color: #E2E8F0 !important;
+  border-bottom: 1.5px solid #E2E8F0 !important;
+  padding: 20px 24px !important;
+  position: relative !important;
 }
+
+/* Gradient top-accent bar on modal header */
+.modal-header::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #0B4DBA, #C86DD7) !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+/* Modal title — brand blue, Poppins Bold */
 .modal-title {
-  color: #2E2E2E !important;
+  color: #0B4DBA !important;
   font-weight: 700 !important;
+  font-size: 17px !important;
+  font-family: 'Poppins', sans-serif !important;
 }
+
+/* Close button */
 .modal-close {
   background: transparent !important;
   border: 1.5px solid #E2E8F0 !important;
   color: #6B7280 !important;
+  border-radius: 8px !important;
+  transition: all 0.15s !important;
 }
 .modal-close:hover {
-  background: #F4F7FC !important;
-  color: #2E2E2E !important;
+  background: rgba(11,77,186,0.06) !important;
+  color: #0B4DBA !important;
   border-color: #0B4DBA !important;
 }
-.modal-body   { background: #FFFFFF !important; }
+
+/* Modal body & footer */
+.modal-body {
+  background: #FFFFFF !important;
+  padding: 22px 24px !important;
+}
 .modal-footer {
   background: #FFFFFF !important;
-  border-top-color: #E2E8F0 !important;
+  border-top: 1.5px solid #E2E8F0 !important;
+  padding: 16px 24px !important;
+  gap: 10px !important;
 }
+
+/* All form labels inside modal */
+.modal-body .form-group label {
+  color: #6B7280 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.10em !important;
+}
+
+/* All inputs inside modal */
+.modal-body .inp,
+.modal-body input,
+.modal-body textarea,
+.modal-body select {
+  background: #FAFBFD !important;
+  border: 1.5px solid #E2E8F0 !important;
+  color: #2E2E2E !important;
+  border-radius: 10px !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 13.5px !important;
+}
+.modal-body .inp:focus,
+.modal-body input:focus,
+.modal-body textarea:focus,
+.modal-body select:focus {
+  border-color: #0B4DBA !important;
+  box-shadow: 0 0 0 3px rgba(11,77,186,0.10) !important;
+  outline: none !important;
+  background: #FFFFFF !important;
+}
+.modal-body .inp::placeholder,
+.modal-body input::placeholder,
+.modal-body textarea::placeholder {
+  color: #B0BBCC !important;
+}
+
+/* Select dropdown arrow color fix */
+.modal-body select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230B4DBA' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  padding-right: 36px !important;
+  cursor: pointer !important;
+}
+
+/* Detail labels (view task modal) */
 .detail-label { color: #6B7280 !important; }
-.detail-value { color: #2E2E2E !important; }
+.detail-value { color: #2E2E2E !important; font-weight: 500 !important; }
+
+/* Comment / description box */
 .comment-box {
   background: #F4F7FC !important;
-  border-color: #E2E8F0 !important;
+  border: 1.5px solid #E2E8F0 !important;
   color: #2E2E2E !important;
+  border-radius: 10px !important;
+  line-height: 1.65 !important;
 }
-.divider { background: #E2E8F0 !important; }
+
+/* Divider inside modal body */
+.divider {
+  background: #E2E8F0 !important;
+  height: 1px !important;
+  border: none !important;
+}
 
 /* ─────────────────────────────────────────────
    STEP 19: TOAST
