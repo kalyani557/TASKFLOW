@@ -1,34 +1,36 @@
 /* ══════════════════════════════════════════════════════════════
-   MHTECHIN — CORPORATE LIGHT THEME OVERRIDE
-   update.css — loaded after index.html inline styles
-   No changes to index.html required.
+   MHTECHIN — CORPORATE THEME v2 (Dark Sidebar + Rich Depth)
+   update.css — drop-in override, no changes to index.html
 
-   Manager's Brand Spec:
+   Brand Colors:
      Primary Blue:   #0B4DBA
      Primary Purple: #C86DD7
-     White:          #FFFFFF
-     Dark Text:      #2E2E2E
-     Gradient:       linear-gradient(135deg, #0B4DBA, #C86DD7)
-     Font:           Poppins (800 logo, 400/500 body)
+     Gradient:       135deg, #0B4DBA → #C86DD7
+     Font:           Poppins
    ══════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 /* ─────────────────────────────────────────────
-   STEP 1: OVERRIDE ALL CSS CUSTOM PROPERTIES
-   The index.html dark theme declares these in :root.
-   Redeclaring them here (same specificity, later in cascade)
-   replaces every dark color across the entire app.
+   ROOT VARIABLE OVERRIDE
+   Dark sidebar palette + richer content bg
    ───────────────────────────────────────────── */
 :root {
-  --bg:        #F4F7FC;
-  --surface:   #FFFFFF;
-  --surface2:  #EEF2F9;
-  --border:    #E2E8F0;
+  /* Sidebar — deep navy */
+  --bg:        #0D1B3E;       /* rich dark navy page bg for sidebar zone */
+  --surface:   #112257;       /* sidebar surface */
+  --surface2:  #162D6B;       /* sidebar hover/active */
+  --border:    #1E3A7A;       /* sidebar borders */
+
+  /* Brand */
   --accent:    #0B4DBA;
   --accent2:   #C86DD7;
+
+  /* Text */
   --text:      #2E2E2E;
   --muted:     #6B7280;
+
+  /* Status */
   --success:   #16A34A;
   --warn:      #D97706;
   --info:      #0891B2;
@@ -36,44 +38,54 @@
 }
 
 /* ─────────────────────────────────────────────
-   STEP 2: GLOBAL FONT + BASE
+   GLOBAL FONT
    ───────────────────────────────────────────── */
 *, *::before, *::after {
   font-family: 'Poppins', 'Montserrat', 'Inter', Arial, sans-serif !important;
 }
 
+/* ─────────────────────────────────────────────
+   BODY — rich blue-tinted background
+   Not pure white, not dark — a confident mid tone
+   ───────────────────────────────────────────── */
 body {
-  background: #F4F7FC !important;
+  background: #E8EEF8 !important;
   color: #2E2E2E !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 3: LOGIN SCREEN
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   LOGIN SCREEN
+   ══════════════════════════════════════════════ */
 #login-screen {
-  background: #F4F7FC !important;
+  background: linear-gradient(135deg, #0B4DBA 0%, #7B3FAD 50%, #C86DD7 100%) !important;
 }
 
 .login-orb-1 {
-  background: radial-gradient(circle, rgba(11,77,186,0.13) 0%, transparent 70%) !important;
+  background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%) !important;
+  opacity: 1 !important;
+  width: 700px !important;
+  height: 700px !important;
 }
 .login-orb-2 {
-  background: radial-gradient(circle, rgba(200,109,215,0.10) 0%, transparent 70%) !important;
+  background: radial-gradient(circle, rgba(200,109,215,0.30) 0%, transparent 70%) !important;
+  opacity: 1 !important;
+  width: 600px !important;
+  height: 600px !important;
 }
 
 .login-card {
   background: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
-  box-shadow: 0 20px 60px rgba(11,77,186,0.12), 0 2px 8px rgba(0,0,0,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.25) !important;
+  box-shadow:
+    0 32px 80px rgba(11,77,186,0.40),
+    0 8px 32px rgba(200,109,215,0.20),
+    0 0 0 1px rgba(255,255,255,0.10) inset !important;
 }
 
-/* Brand mark — gradient pill */
 .brand-mark {
   background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
-  box-shadow: 0 6px 20px rgba(11,77,186,0.30) !important;
+  box-shadow: 0 6px 20px rgba(11,77,186,0.40) !important;
 }
-
-/* Brand name — Poppins ExtraBold, All Caps, gradient text */
 .brand-name {
   font-weight: 800 !important;
   text-transform: uppercase !important;
@@ -84,192 +96,236 @@ body {
   background-clip: text !important;
 }
 
-.login-heading {
-  color: #2E2E2E !important;
-  font-weight: 700 !important;
-  font-family: 'Poppins', sans-serif !important;
-}
-.login-sub {
-  color: #6B7280 !important;
-}
-.login-hint {
-  color: #6B7280 !important;
-  border-top-color: #E2E8F0 !important;
-}
-.login-hint strong {
-  color: #2E2E2E !important;
-}
+.login-heading { color: #1a1a2e !important; font-weight: 700 !important; }
+.login-sub     { color: #6B7280 !important; }
+.login-hint    { color: #9CA3AF !important; border-top-color: #E5E7EB !important; }
+.login-hint strong { color: #2E2E2E !important; }
+
 .error-msg {
-  background: rgba(220,38,38,0.06) !important;
-  border-color: rgba(220,38,38,0.22) !important;
+  background: rgba(220,38,38,0.07) !important;
+  border-color: rgba(220,38,38,0.25) !important;
   color: #DC2626 !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 4: FORM INPUTS
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   INPUTS (login + modal)
+   ══════════════════════════════════════════════ */
 .inp {
-  background: #FFFFFF !important;
-  border: 1.5px solid #E2E8F0 !important;
+  background: #F8FAFD !important;
+  border: 1.5px solid #D8E0EE !important;
   color: #2E2E2E !important;
   border-radius: 10px !important;
 }
 .inp:focus {
   border-color: #0B4DBA !important;
+  box-shadow: 0 0 0 3px rgba(11,77,186,0.12) !important;
+  outline: none !important;
+  background: #FFFFFF !important;
+}
+.inp::placeholder { color: #B0BBCC !important; opacity: 1 !important; }
+textarea.inp { resize: vertical !important; }
+
+.filter-inp, .search-inp {
+  background: #FFFFFF !important;
+  border: 1.5px solid #D8E0EE !important;
+  color: #2E2E2E !important;
+}
+.filter-inp:focus, .search-inp:focus {
+  border-color: #0B4DBA !important;
   box-shadow: 0 0 0 3px rgba(11,77,186,0.10) !important;
   outline: none !important;
 }
-.inp::placeholder {
-  color: #A0ABBF !important;
-  opacity: 1 !important;
-}
-
-.filter-inp {
-  background: #F4F7FC !important;
-  border: 1.5px solid #E2E8F0 !important;
-  color: #2E2E2E !important;
-}
-.filter-inp:focus {
-  border-color: #0B4DBA !important;
-  box-shadow: 0 0 0 3px rgba(11,77,186,0.08) !important;
-  outline: none !important;
-}
-
-.search-inp {
-  background: #F4F7FC !important;
-  border: 1.5px solid #E2E8F0 !important;
-  color: #2E2E2E !important;
-}
-.search-inp:focus {
-  border-color: #0B4DBA !important;
-  box-shadow: 0 0 0 3px rgba(11,77,186,0.08) !important;
-  outline: none !important;
-}
-.search-inp::placeholder { color: #A0ABBF !important; }
-.search-icon { color: #A0ABBF !important; }
-
-.pw-toggle { color: #6B7280 !important; }
+.search-inp::placeholder { color: #B0BBCC !important; }
+.search-icon { color: #9CA3AF !important; }
+.pw-toggle { color: #9CA3AF !important; }
 .pw-toggle:hover { color: #0B4DBA !important; }
 
-/* ─────────────────────────────────────────────
-   STEP 5: BUTTONS
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   BUTTONS — all variants with brand colors
+   ══════════════════════════════════════════════ */
+
+/* Primary — blue to purple gradient */
 .btn-primary {
   background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
   color: #FFFFFF !important;
-  box-shadow: 0 4px 16px rgba(11,77,186,0.28) !important;
   border: none !important;
+  box-shadow: 0 4px 18px rgba(11,77,186,0.35), 0 1px 4px rgba(0,0,0,0.10) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  border-radius: 10px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.20s !important;
 }
 .btn-primary:hover {
-  opacity: 0.88 !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 8px 28px rgba(11,77,186,0.36) !important;
+  opacity: 0.92 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 30px rgba(11,77,186,0.42), 0 2px 8px rgba(200,109,215,0.20) !important;
 }
-.btn-primary:active { transform: translateY(0) !important; }
+.btn-primary:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 4px 12px rgba(11,77,186,0.30) !important;
+}
 
+/* Ghost — blue outlined, fills on hover */
 .btn-ghost {
-  background: transparent !important;
-  color: #6B7280 !important;
-  border: 1.5px solid #E2E8F0 !important;
+  background: #FFFFFF !important;
+  color: #0B4DBA !important;
+  border: 1.5px solid #0B4DBA !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  transition: all 0.20s !important;
 }
 .btn-ghost:hover {
-  border-color: #0B4DBA !important;
-  color: #0B4DBA !important;
-  background: rgba(11,77,186,0.05) !important;
+  background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+  box-shadow: 0 6px 20px rgba(11,77,186,0.30) !important;
+  transform: translateY(-1px) !important;
 }
+.btn-ghost:active { transform: translateY(0) !important; }
 
+/* Danger soft — fills red on hover */
 .btn-danger-soft {
   background: rgba(220,38,38,0.08) !important;
   color: #DC2626 !important;
-  border: 1.5px solid rgba(220,38,38,0.22) !important;
+  border: 1.5px solid rgba(220,38,38,0.30) !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  transition: all 0.20s !important;
 }
-.btn-danger-soft:hover { background: rgba(220,38,38,0.14) !important; }
+.btn-danger-soft:hover {
+  background: linear-gradient(135deg, #DC2626, #F87171) !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+  box-shadow: 0 6px 18px rgba(220,38,38,0.35) !important;
+  transform: translateY(-1px) !important;
+}
 
-/* ─────────────────────────────────────────────
-   STEP 6: SIDEBAR
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   SIDEBAR — deep navy dark
+   ══════════════════════════════════════════════ */
 .sidebar {
-  background: #FFFFFF !important;
-  border-right: 1.5px solid #E2E8F0 !important;
-  box-shadow: 2px 0 16px rgba(11,77,186,0.06) !important;
+  background: linear-gradient(180deg, #0D1B3E 0%, #0A1530 100%) !important;
+  border-right: 1px solid rgba(255,255,255,0.06) !important;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.35) !important;
 }
+
+/* Sidebar brand area */
 .sidebar-brand {
-  border-bottom-color: #E2E8F0 !important;
-  background: #FFFFFF !important;
+  background: rgba(255,255,255,0.04) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  padding: 20px 18px !important;
 }
+.sidebar-brand .brand-mark {
+  background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  box-shadow: 0 4px 14px rgba(11,77,186,0.50) !important;
+}
+.sidebar-brand .brand-name {
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  background: linear-gradient(135deg, #5B9EF8, #D68EE8) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Sidebar user block */
 .sidebar-user {
-  background: linear-gradient(135deg,
-    rgba(11,77,186,0.06) 0%,
-    rgba(200,109,215,0.06) 100%) !important;
-  border-bottom-color: #E2E8F0 !important;
+  background: rgba(11,77,186,0.18) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+  padding: 14px 16px !important;
 }
-.su-name { color: #2E2E2E !important; }
+.su-name { color: #E8EEF8 !important; font-weight: 600 !important; }
 .su-role.admin {
   background: linear-gradient(135deg, #0B4DBA, #C86DD7) !important;
   color: #FFFFFF !important;
+  font-weight: 700 !important;
 }
 .su-role.member {
-  background: rgba(8,145,178,0.12) !important;
-  color: #0891B2 !important;
+  background: rgba(8,145,178,0.25) !important;
+  color: #7DD3FC !important;
 }
-.nav-section { color: #A0ABBF !important; }
 
+/* Nav section labels */
+.nav-section {
+  color: rgba(255,255,255,0.30) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.14em !important;
+}
+
+/* Nav items */
 .nav-item {
-  color: #6B7280 !important;
+  color: rgba(255,255,255,0.55) !important;
   border-color: transparent !important;
+  border-radius: 10px !important;
 }
 .nav-item:hover {
-  background: rgba(11,77,186,0.06) !important;
-  color: #0B4DBA !important;
+  background: rgba(255,255,255,0.08) !important;
+  color: #FFFFFF !important;
   border-color: transparent !important;
 }
 .nav-item.active {
-  background: rgba(11,77,186,0.08) !important;
-  color: #0B4DBA !important;
-  border-color: rgba(11,77,186,0.15) !important;
+  background: linear-gradient(135deg,
+    rgba(11,77,186,0.55) 0%,
+    rgba(200,109,215,0.35) 100%) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(91,158,248,0.30) !important;
   font-weight: 600 !important;
+  box-shadow: 0 2px 12px rgba(11,77,186,0.30) !important;
 }
 .nav-item.active::before {
-  background: linear-gradient(180deg, #0B4DBA, #C86DD7) !important;
-}
-.sidebar-footer { border-top-color: #E2E8F0 !important; }
-.logout-btn { color: #DC2626 !important; }
-.logout-btn:hover {
-  background: rgba(220,38,38,0.06) !important;
-  border-color: rgba(220,38,38,0.18) !important;
+  background: linear-gradient(180deg, #5B9EF8, #C86DD7) !important;
+  width: 3px !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 7: AVATARS
-   ───────────────────────────────────────────── */
-.avatar {
-  background: linear-gradient(135deg, #0B4DBA, #C86DD7) !important;
-  color: #FFFFFF !important;
+/* Nav icons */
+.nav-icon svg { stroke-width: 1.8 !important; }
+
+/* Sidebar footer */
+.sidebar-footer {
+  border-top: 1px solid rgba(255,255,255,0.08) !important;
+  background: transparent !important;
 }
-.avatar-admin {
+.logout-btn {
+  color: rgba(248,113,113,0.85) !important;
+}
+.logout-btn:hover {
+  background: rgba(220,38,38,0.15) !important;
+  border-color: rgba(220,38,38,0.30) !important;
+  color: #FCA5A5 !important;
+}
+
+/* ══════════════════════════════════════════════
+   AVATARS
+   ══════════════════════════════════════════════ */
+.avatar, .avatar-admin {
   background: linear-gradient(135deg, #0B4DBA, #C86DD7) !important;
   color: #FFFFFF !important;
+  font-weight: 700 !important;
 }
 .avatar-member {
   background: linear-gradient(135deg, #0891B2, #16A34A) !important;
   color: #FFFFFF !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 8: TOPBAR
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   TOPBAR
+   ══════════════════════════════════════════════ */
 .topbar {
-  background: rgba(255,255,255,0.94) !important;
-  border-bottom: 1.5px solid #E2E8F0 !important;
-  box-shadow: 0 2px 10px rgba(11,77,186,0.06) !important;
+  background: rgba(255,255,255,0.96) !important;
+  border-bottom: 1.5px solid #D8E0EE !important;
+  box-shadow: 0 2px 12px rgba(11,77,186,0.08) !important;
+  backdrop-filter: blur(12px) !important;
 }
 .topbar-title {
-  color: #2E2E2E !important;
+  color: #0D1B3E !important;
   font-weight: 700 !important;
-  font-family: 'Poppins', sans-serif !important;
+  font-size: 18px !important;
 }
 .menu-toggle {
-  border-color: #E2E8F0 !important;
+  border-color: #D8E0EE !important;
   color: #2E2E2E !important;
   background: transparent !important;
 }
@@ -278,48 +334,97 @@ body {
   color: #0B4DBA !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 9: PAGES & MAIN CONTENT
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   MAIN CONTENT AREA — richer blue-tinted bg
+   ══════════════════════════════════════════════ */
 .main-content {
-  background: #F4F7FC !important;
+  background: #E8EEF8 !important;
 }
 .page {
   background: transparent !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 10: WELCOME BANNER
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   WELCOME BANNER — full gradient, prominent
+   ══════════════════════════════════════════════ */
 .welcome-banner {
-  background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  background: linear-gradient(135deg, #0B4DBA 0%, #6A35C2 50%, #C86DD7 100%) !important;
   border: none !important;
-  box-shadow: 0 8px 28px rgba(11,77,186,0.24) !important;
+  box-shadow:
+    0 10px 32px rgba(11,77,186,0.30),
+    0 2px 8px rgba(0,0,0,0.10) !important;
+  border-radius: 18px !important;
 }
 .welcome-banner::before {
-  background: rgba(255,255,255,0.08) !important;
+  background: rgba(255,255,255,0.10) !important;
+}
+.welcome-banner::after {
+  content: '' !important;
+  position: absolute !important;
+  left: -30px !important;
+  bottom: -40px !important;
+  width: 160px !important;
+  height: 160px !important;
+  border-radius: 50% !important;
+  background: rgba(255,255,255,0.05) !important;
 }
 .wb-text h2 {
   color: #FFFFFF !important;
   font-weight: 700 !important;
+  font-size: 20px !important;
 }
 .wb-text p { color: rgba(255,255,255,0.82) !important; }
-.wb-badge  { opacity: 0.80 !important; }
+.wb-badge  { opacity: 0.85 !important; }
 
-/* ─────────────────────────────────────────────
-   STEP 11: STAT CARDS
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   STAT CARDS — white with colored top accent
+   ══════════════════════════════════════════════ */
 .stat-card {
   background: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
-  box-shadow: 0 2px 10px rgba(11,77,186,0.06) !important;
+  border: 1px solid #D8E0EE !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 12px rgba(11,77,186,0.08) !important;
+  padding: 20px 22px 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
 .stat-card:hover {
   transform: translateY(-3px) !important;
-  box-shadow: 0 8px 28px rgba(11,77,186,0.12) !important;
+  box-shadow: 0 10px 32px rgba(11,77,186,0.14) !important;
 }
-.stat-label { color: #6B7280 !important; }
-.stat-sub   { color: #6B7280 !important; }
+
+/* Colored top-border accent (override bottom bar) */
+.stat-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
+  height: 4px !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+.stat-card::after { display: none !important; }
+
+.stat-card.c-complete::before   { background: #16A34A !important; }
+.stat-card.c-progress::before   { background: #0891B2 !important; }
+.stat-card.c-ongoing::before    { background: #D97706 !important; }
+.stat-card.c-incomplete::before { background: #DC2626 !important; }
+.stat-card.c-total::before      { background: linear-gradient(90deg, #0B4DBA, #C86DD7) !important; }
+.stat-card.c-team::before       { background: linear-gradient(90deg, #C86DD7, #0B4DBA) !important; }
+
+.stat-label {
+  color: #6B7280 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.10em !important;
+  margin-top: 6px !important;
+}
+.stat-value {
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+.stat-sub { color: #9CA3AF !important; font-size: 12px !important; padding-bottom: 18px !important; }
 
 .stat-card.c-complete   .stat-value { color: #16A34A !important; }
 .stat-card.c-progress   .stat-value { color: #0891B2 !important; }
@@ -328,124 +433,253 @@ body {
 .stat-card.c-total      .stat-value { color: #0B4DBA !important; }
 .stat-card.c-team       .stat-value { color: #C86DD7 !important; }
 
-.stat-card.c-complete::after   { background: #16A34A !important; }
-.stat-card.c-progress::after   { background: #0891B2 !important; }
-.stat-card.c-ongoing::after    { background: #D97706 !important; }
-.stat-card.c-incomplete::after { background: #DC2626 !important; }
-.stat-card.c-total::after      { background: #0B4DBA !important; }
-.stat-card.c-team::after       { background: #C86DD7 !important; }
-
-/* ─────────────────────────────────────────────
-   STEP 12: CARD COMPONENT
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   CARD COMPONENT — gradient header accent
+   ══════════════════════════════════════════════ */
 .card {
   background: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
-  box-shadow: 0 2px 10px rgba(11,77,186,0.05) !important;
+  border: 1px solid #D8E0EE !important;
+  border-radius: 18px !important;
+  box-shadow:
+    0 4px 20px rgba(11,77,186,0.08),
+    0 1px 4px rgba(0,0,0,0.04) !important;
+  overflow: hidden !important;
 }
+
+/* Gradient top accent bar on every card */
+.card::before {
+  content: '' !important;
+  display: block !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  border-radius: 18px 18px 0 0 !important;
+}
+
 .card-header {
-  background: #FFFFFF !important;
-  border-bottom-color: #E2E8F0 !important;
+  background: linear-gradient(135deg,
+    rgba(11,77,186,0.04) 0%,
+    rgba(200,109,215,0.03) 100%) !important;
+  border-bottom: 1.5px solid #E8EEF8 !important;
+  padding: 16px 22px !important;
 }
 .card-title {
-  color: #2E2E2E !important;
+  color: #0D1B3E !important;
   font-weight: 700 !important;
+  font-size: 15px !important;
+  letter-spacing: -0.01em !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 13: TABLE
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   TABLE — rich creative styling
+   ══════════════════════════════════════════════ */
+table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+/* Header — gradient background */
+thead tr {
+  background: linear-gradient(90deg,
+    rgba(11,77,186,0.06) 0%,
+    rgba(200,109,215,0.04) 100%) !important;
+}
 thead th {
-  color: #6B7280 !important;
-  background: #F4F7FC !important;
-  border-bottom-color: #E2E8F0 !important;
-}
-tbody tr { border-bottom-color: #F1F5FB !important; }
-tbody tr:hover { background: rgba(11,77,186,0.03) !important; }
-tbody td { color: #2E2E2E !important; }
-.task-title-main { color: #2E2E2E !important; }
-.task-title-desc { color: #6B7280 !important; }
-.date-cell       { color: #6B7280 !important; }
-.mem-name        { color: #2E2E2E !important; }
-.mem-user        { color: #6B7280 !important; }
-
-/* ─────────────────────────────────────────────
-   STEP 14: STATUS TAGS
-   ───────────────────────────────────────────── */
-.s-completed  { background: rgba(22,163,74,0.10)  !important; color: #16A34A !important; }
-.s-inprogress { background: rgba(8,145,178,0.10)  !important; color: #0891B2 !important; }
-.s-ongoing    { background: rgba(217,119,6,0.10)  !important; color: #D97706 !important; }
-.s-incomplete { background: rgba(220,38,38,0.10)  !important; color: #DC2626 !important; }
-
-.s-completed  .status-dot { background: #16A34A !important; box-shadow: 0 0 5px rgba(22,163,74,0.5)  !important; }
-.s-inprogress .status-dot { background: #0891B2 !important; box-shadow: 0 0 5px rgba(8,145,178,0.5)  !important; }
-.s-ongoing    .status-dot { background: #D97706 !important; box-shadow: 0 0 5px rgba(217,119,6,0.5)  !important; }
-.s-incomplete .status-dot { background: #DC2626 !important; box-shadow: 0 0 5px rgba(220,38,38,0.5)  !important; }
-
-/* ─────────────────────────────────────────────
-   STEP 15: ICON ACTION BUTTONS
-   ───────────────────────────────────────────── */
-.icon-btn {
   background: transparent !important;
-  border: 1.5px solid #E2E8F0 !important;
-  color: #6B7280 !important;
-}
-.icon-btn:hover {
-  background: rgba(11,77,186,0.07) !important;
   color: #0B4DBA !important;
-  border-color: rgba(11,77,186,0.28) !important;
-}
-.icon-btn.del:hover {
-  background: rgba(220,38,38,0.08) !important;
-  color: #DC2626 !important;
-  border-color: rgba(220,38,38,0.28) !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  border-bottom: 2px solid rgba(11,77,186,0.12) !important;
+  padding: 13px 18px !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 16: TAG CHIP
-   ───────────────────────────────────────────── */
-.tag {
+/* Body rows — alternating subtle tint */
+tbody tr {
+  border-bottom: 1px solid #EEF2FA !important;
+  transition: all 0.18s !important;
+}
+tbody tr:nth-child(even) {
+  background: rgba(11,77,186,0.02) !important;
+}
+tbody tr:last-child { border-bottom: none !important; }
+
+/* Row hover — brand blue tint + left accent */
+tbody tr:hover {
+  background: linear-gradient(90deg,
+    rgba(11,77,186,0.06) 0%,
+    rgba(200,109,215,0.03) 100%) !important;
+  transform: translateX(2px) !important;
+  box-shadow: inset 3px 0 0 #0B4DBA !important;
+}
+
+tbody td {
+  color: #2E2E2E !important;
+  padding: 14px 18px !important;
+  font-size: 13.5px !important;
+  vertical-align: middle !important;
+}
+
+/* Task title — bolder, darker */
+.task-title-main {
+  color: #0D1B3E !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+}
+.task-title-desc {
+  color: #9CA3AF !important;
+  font-size: 11.5px !important;
+  margin-top: 2px !important;
+}
+.date-cell {
+  color: #6B7280 !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+}
+.mem-name {
+  color: #0D1B3E !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+.mem-user { color: #9CA3AF !important; font-size: 11.5px !important; }
+
+/* ══════════════════════════════════════════════
+   STATUS TAGS — bolder, more colorful pills
+   ══════════════════════════════════════════════ */
+.status-tag {
+  padding: 5px 13px !important;
+  border-radius: 20px !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  border: 1.5px solid transparent !important;
+}
+
+.s-completed {
+  background: rgba(22,163,74,0.12) !important;
+  color: #15803D !important;
+  border-color: rgba(22,163,74,0.25) !important;
+}
+.s-inprogress {
   background: rgba(11,77,186,0.10) !important;
   color: #0B4DBA !important;
+  border-color: rgba(11,77,186,0.22) !important;
+}
+.s-ongoing {
+  background: rgba(217,119,6,0.10) !important;
+  color: #B45309 !important;
+  border-color: rgba(217,119,6,0.25) !important;
+}
+.s-incomplete {
+  background: rgba(220,38,38,0.10) !important;
+  color: #B91C1C !important;
+  border-color: rgba(220,38,38,0.22) !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 17: EMPTY STATE
-   ───────────────────────────────────────────── */
+/* Glowing status dots */
+.status-dot {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+.s-completed  .status-dot {
+  background: #16A34A !important;
+  box-shadow: 0 0 6px rgba(22,163,74,0.70) !important;
+}
+.s-inprogress .status-dot {
+  background: #0B4DBA !important;
+  box-shadow: 0 0 6px rgba(11,77,186,0.70) !important;
+}
+.s-ongoing    .status-dot {
+  background: #D97706 !important;
+  box-shadow: 0 0 6px rgba(217,119,6,0.70) !important;
+}
+.s-incomplete .status-dot {
+  background: #DC2626 !important;
+  box-shadow: 0 0 6px rgba(220,38,38,0.70) !important;
+}
+
+/* ══════════════════════════════════════════════
+   ICON ACTION BUTTONS — always colored
+   ══════════════════════════════════════════════ */
+.action-btns { gap: 7px !important; display: flex !important; }
+
+/* Edit — always blue gradient */
+.icon-btn {
+  width: 32px !important;
+  height: 32px !important;
+  background: linear-gradient(135deg, #0B4DBA, #4A7FD4) !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  border-radius: 9px !important;
+  transition: all 0.18s !important;
+  box-shadow: 0 2px 8px rgba(11,77,186,0.28) !important;
+}
+.icon-btn svg { stroke: #FFFFFF !important; }
+.icon-btn:hover {
+  background: linear-gradient(135deg, #0B4DBA, #C86DD7) !important;
+  box-shadow: 0 5px 16px rgba(11,77,186,0.42) !important;
+  transform: translateY(-2px) !important;
+}
+.icon-btn:active { transform: translateY(0) !important; }
+
+/* Delete — always red gradient */
+.icon-btn.del {
+  background: linear-gradient(135deg, #DC2626, #F87171) !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(220,38,38,0.28) !important;
+}
+.icon-btn.del svg { stroke: #FFFFFF !important; }
+.icon-btn.del:hover {
+  background: linear-gradient(135deg, #B91C1C, #DC2626) !important;
+  box-shadow: 0 5px 16px rgba(220,38,38,0.42) !important;
+  transform: translateY(-2px) !important;
+  border-color: transparent !important;
+}
+
+/* ══════════════════════════════════════════════
+   TAG CHIP
+   ══════════════════════════════════════════════ */
+.tag {
+  background: linear-gradient(135deg,
+    rgba(11,77,186,0.10), rgba(200,109,215,0.10)) !important;
+  color: #0B4DBA !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(11,77,186,0.18) !important;
+  border-radius: 6px !important;
+}
+
+/* ══════════════════════════════════════════════
+   EMPTY STATE
+   ══════════════════════════════════════════════ */
 .empty-text { color: #6B7280 !important; }
-.empty-sub  { color: #A0ABBF !important; }
-.empty-icon svg { stroke: #A0ABBF !important; }
+.empty-sub  { color: #B0BBCC !important; }
+.empty-icon svg { stroke: #B0BBCC !important; }
 
-/* ─────────────────────────────────────────────
-   STEP 18: MODAL
-   Fixes: dark right-side scrollbar strip, all
-   backgrounds, header gradient accent bar, inputs
-   ───────────────────────────────────────────── */
-
-/* Overlay backdrop — soft blue tint */
+/* ══════════════════════════════════════════════
+   MODAL
+   ══════════════════════════════════════════════ */
 .modal-overlay {
-  background: rgba(44, 82, 160, 0.22) !important;
+  background: rgba(8,14,36,0.55) !important;
   backdrop-filter: blur(8px) !important;
 }
 
-/* Modal container — pure white, clean border */
 .modal {
   background: #FFFFFF !important;
-  border: 1.5px solid #E2E8F0 !important;
-  box-shadow:
-    0 24px 64px rgba(11,77,186,0.16),
-    0 2px 12px rgba(0,0,0,0.06) !important;
+  border: 1.5px solid #D8E0EE !important;
   border-radius: 20px !important;
-  /* Fix the dark scrollbar strip: override webkit scrollbar inside modal */
+  box-shadow:
+    0 32px 80px rgba(0,0,0,0.20),
+    0 4px 20px rgba(11,77,186,0.12) !important;
   overflow-y: auto !important;
 }
 
-/* Modal inner scrollbar — brand gradient, no dark strip */
-.modal::-webkit-scrollbar {
-  width: 5px !important;
-}
+/* Modal scrollbar — brand gradient */
+.modal::-webkit-scrollbar { width: 5px !important; }
 .modal::-webkit-scrollbar-track {
-  background: #F4F7FC !important;
+  background: #F0F4FB !important;
   border-radius: 0 20px 20px 0 !important;
 }
 .modal::-webkit-scrollbar-thumb {
@@ -453,62 +687,47 @@ tbody td { color: #2E2E2E !important; }
   border-radius: 10px !important;
 }
 
-/* Modal header — white bg + gradient left accent bar */
+/* Gradient top accent bar on modal */
 .modal-header {
   background: #FFFFFF !important;
-  border-bottom: 1.5px solid #E2E8F0 !important;
-  padding: 20px 24px !important;
+  border-bottom: 1.5px solid #E8EEF8 !important;
   position: relative !important;
 }
-
-/* Gradient top-accent bar on modal header */
 .modal-header::before {
   content: '' !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  height: 3px !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
+  height: 4px !important;
   background: linear-gradient(90deg, #0B4DBA, #C86DD7) !important;
   border-radius: 20px 20px 0 0 !important;
 }
-
-/* Modal title — brand blue, Poppins Bold */
 .modal-title {
-  color: #0B4DBA !important;
+  color: #0D1B3E !important;
   font-weight: 700 !important;
   font-size: 17px !important;
   font-family: 'Poppins', sans-serif !important;
 }
-
-/* Close button */
 .modal-close {
-  background: transparent !important;
-  border: 1.5px solid #E2E8F0 !important;
+  background: #F0F4FB !important;
+  border: 1.5px solid #D8E0EE !important;
   color: #6B7280 !important;
   border-radius: 8px !important;
-  transition: all 0.15s !important;
 }
 .modal-close:hover {
-  background: rgba(11,77,186,0.06) !important;
+  background: rgba(11,77,186,0.08) !important;
   color: #0B4DBA !important;
-  border-color: #0B4DBA !important;
+  border-color: rgba(11,77,186,0.25) !important;
 }
 
-/* Modal body & footer */
-.modal-body {
-  background: #FFFFFF !important;
-  padding: 22px 24px !important;
-}
+.modal-body { background: #FFFFFF !important; }
 .modal-footer {
-  background: #FFFFFF !important;
-  border-top: 1.5px solid #E2E8F0 !important;
-  padding: 16px 24px !important;
-  gap: 10px !important;
+  background: #F8FAFD !important;
+  border-top: 1.5px solid #E8EEF8 !important;
 }
 
-/* All form labels inside modal */
-.modal-body .form-group label {
+/* Modal form labels */
+.modal-body .form-group label,
+.form-group label {
   color: #6B7280 !important;
   font-size: 11px !important;
   font-weight: 700 !important;
@@ -521,12 +740,10 @@ tbody td { color: #2E2E2E !important; }
 .modal-body input,
 .modal-body textarea,
 .modal-body select {
-  background: #FAFBFD !important;
-  border: 1.5px solid #E2E8F0 !important;
+  background: #F8FAFD !important;
+  border: 1.5px solid #D8E0EE !important;
   color: #2E2E2E !important;
   border-radius: 10px !important;
-  font-family: 'Poppins', sans-serif !important;
-  font-size: 13.5px !important;
 }
 .modal-body .inp:focus,
 .modal-body input:focus,
@@ -542,73 +759,59 @@ tbody td { color: #2E2E2E !important; }
 .modal-body textarea::placeholder {
   color: #B0BBCC !important;
 }
-
-/* Select dropdown arrow color fix */
 .modal-body select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230B4DBA' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
   background-position: right 12px center !important;
-  appearance: none !important;
   -webkit-appearance: none !important;
+  appearance: none !important;
   padding-right: 36px !important;
-  cursor: pointer !important;
 }
 
-/* Detail labels (view task modal) */
-.detail-label { color: #6B7280 !important; }
-.detail-value { color: #2E2E2E !important; font-weight: 500 !important; }
-
-/* Comment / description box */
+.detail-label { color: #9CA3AF !important; font-weight: 700 !important; }
+.detail-value { color: #0D1B3E !important; font-weight: 500 !important; }
 .comment-box {
-  background: #F4F7FC !important;
-  border: 1.5px solid #E2E8F0 !important;
+  background: #F0F4FB !important;
+  border: 1.5px solid #D8E0EE !important;
   color: #2E2E2E !important;
   border-radius: 10px !important;
-  line-height: 1.65 !important;
 }
+.divider { background: #E8EEF8 !important; height: 1px !important; border: none !important; }
 
-/* Divider inside modal body */
-.divider {
-  background: #E2E8F0 !important;
-  height: 1px !important;
-  border: none !important;
-}
-
-/* ─────────────────────────────────────────────
-   STEP 19: TOAST
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   TOAST
+   ══════════════════════════════════════════════ */
 .toast {
   background: #FFFFFF !important;
-  border: 1px solid #E2E8F0 !important;
+  border: 1px solid #D8E0EE !important;
   color: #2E2E2E !important;
-  box-shadow: 0 8px 24px rgba(11,77,186,0.12) !important;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.12) !important;
+  border-radius: 12px !important;
 }
-.toast.success { border-left: 3px solid #16A34A !important; }
-.toast.error   { border-left: 3px solid #DC2626 !important; }
-.toast.info    { border-left: 3px solid #0B4DBA !important; }
+.toast.success { border-left: 4px solid #16A34A !important; }
+.toast.error   { border-left: 4px solid #DC2626 !important; }
+.toast.info    { border-left: 4px solid #0B4DBA !important; }
 
-/* ─────────────────────────────────────────────
-   STEP 20: MOBILE OVERLAY
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   MOBILE SIDEBAR OVERLAY
+   ══════════════════════════════════════════════ */
 .sidebar-overlay {
-  background: rgba(11,77,186,0.15) !important;
+  background: rgba(8,14,36,0.55) !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 21: SCROLLBAR
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   SCROLLBAR — global
+   ══════════════════════════════════════════════ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #F4F7FC; }
+::-webkit-scrollbar-track { background: #E8EEF8; }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #0B4DBA, #C86DD7);
   border-radius: 10px;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 22: OVERRIDE FRAUNCES FONT
-   index.html uses Fraunces serif for headings —
-   manager spec requires Poppins everywhere.
-   ───────────────────────────────────────────── */
+/* ══════════════════════════════════════════════
+   FONT OVERRIDE — replace Fraunces with Poppins
+   ══════════════════════════════════════════════ */
 .topbar-title,
 .card-title,
 .modal-title,
@@ -617,23 +820,83 @@ tbody td { color: #2E2E2E !important; }
 .brand-name,
 .stat-value,
 .empty-text {
-  font-family: 'Poppins', 'Montserrat', 'Inter', Arial, sans-serif !important;
+  font-family: 'Poppins', 'Montserrat', Arial, sans-serif !important;
 }
 
-/* ─────────────────────────────────────────────
-   STEP 23: RESPONSIVE
-   ───────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════
+   MEMBERS PAGE — Assign Task button per row
+   ══════════════════════════════════════════════ */
+
+/* "Assign Task" button inside members table */
+.members-table .btn-primary,
+td .btn-primary,
+tbody .btn-primary {
+  font-size: 12px !important;
+  padding: 7px 14px !important;
+  border-radius: 8px !important;
+  background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  box-shadow: 0 2px 10px rgba(11,77,186,0.28) !important;
+}
+tbody .btn-primary:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 18px rgba(11,77,186,0.40) !important;
+}
+
+/* ══════════════════════════════════════════════
+   TOPBAR ASSIGN TASK BUTTON — extra prominent
+   ══════════════════════════════════════════════ */
+#topbar-actions .btn-primary {
+  background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  padding: 10px 22px !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 20px rgba(11,77,186,0.38) !important;
+}
+#topbar-actions .btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 28px rgba(11,77,186,0.48), 0 2px 8px rgba(200,109,215,0.25) !important;
+}
+
+/* ══════════════════════════════════════════════
+   CARD HEADER BUTTONS — View All Tasks, Add Member
+   ══════════════════════════════════════════════ */
+.card-header .btn-primary {
+  background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  box-shadow: 0 3px 12px rgba(11,77,186,0.30) !important;
+  font-size: 12.5px !important;
+  padding: 8px 16px !important;
+  border-radius: 9px !important;
+}
+.card-header .btn-ghost {
+  font-size: 12.5px !important;
+  padding: 8px 16px !important;
+  border-radius: 9px !important;
+  border: 1.5px solid #0B4DBA !important;
+  color: #0B4DBA !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+}
+.card-header .btn-ghost:hover {
+  background: linear-gradient(135deg, #0B4DBA, #C86DD7) !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 14px rgba(11,77,186,0.30) !important;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .sidebar {
-    box-shadow: 4px 0 24px rgba(11,77,186,0.10) !important;
+    box-shadow: 6px 0 32px rgba(0,0,0,0.40) !important;
   }
-  body,
-  .main-content,
-  .page {
-    background: #F4F7FC !important;
+  body, .main-content, .page {
+    background: #E8EEF8 !important;
     color: #2E2E2E !important;
   }
 }
-
 
 
