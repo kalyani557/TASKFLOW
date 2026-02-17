@@ -1,121 +1,525 @@
-/* =====================================
-   FULL CORPORATE LIGHT THEME OVERRIDE
-   ===================================== */
+/* ══════════════════════════════════════════════════════════════
+   MHTECHIN — CORPORATE LIGHT THEME OVERRIDE
+   update.css — loaded after index.html inline styles
+   No changes to index.html required.
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+   Manager's Brand Spec:
+     Primary Blue:   #0B4DBA
+     Primary Purple: #C86DD7
+     White:          #FFFFFF
+     Dark Text:      #2E2E2E
+     Gradient:       linear-gradient(135deg, #0B4DBA, #C86DD7)
+     Font:           Poppins (800 logo, 400/500 body)
+   ══════════════════════════════════════════════════════════════ */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ─────────────────────────────────────────────
+   STEP 1: OVERRIDE ALL CSS CUSTOM PROPERTIES
+   The index.html dark theme declares these in :root.
+   Redeclaring them here (same specificity, later in cascade)
+   replaces every dark color across the entire app.
+   ───────────────────────────────────────────── */
 :root {
-  --primary-blue: #0B4DBA;
-  --primary-purple: #C86DD7;
-  --white: #ffffff;
-  --dark-text: #2E2E2E;
-  --light-bg: #F4F7FC;
-  --primary-gradient: linear-gradient(to right, #0B4DBA, #C86DD7);
+  --bg:        #F4F7FC;
+  --surface:   #FFFFFF;
+  --surface2:  #EEF2F9;
+  --border:    #E2E8F0;
+  --accent:    #0B4DBA;
+  --accent2:   #C86DD7;
+  --text:      #2E2E2E;
+  --muted:     #6B7280;
+  --success:   #16A34A;
+  --warn:      #D97706;
+  --info:      #0891B2;
+  --danger:    #DC2626;
 }
 
-/* ===== Global Reset ===== */
+/* ─────────────────────────────────────────────
+   STEP 2: GLOBAL FONT + BASE
+   ───────────────────────────────────────────── */
+*, *::before, *::after {
+  font-family: 'Poppins', 'Montserrat', 'Inter', Arial, sans-serif !important;
+}
 
-* {
+body {
+  background: #F4F7FC !important;
+  color: #2E2E2E !important;
+}
+
+/* ─────────────────────────────────────────────
+   STEP 3: LOGIN SCREEN
+   ───────────────────────────────────────────── */
+#login-screen {
+  background: #F4F7FC !important;
+}
+
+.login-orb-1 {
+  background: radial-gradient(circle, rgba(11,77,186,0.13) 0%, transparent 70%) !important;
+}
+.login-orb-2 {
+  background: radial-gradient(circle, rgba(200,109,215,0.10) 0%, transparent 70%) !important;
+}
+
+.login-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 20px 60px rgba(11,77,186,0.12), 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+
+/* Brand mark — gradient pill */
+.brand-mark {
+  background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  box-shadow: 0 6px 20px rgba(11,77,186,0.30) !important;
+}
+
+/* Brand name — Poppins ExtraBold, All Caps, gradient text */
+.brand-name {
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  background: linear-gradient(135deg, #0B4DBA, #C86DD7) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.login-heading {
+  color: #2E2E2E !important;
+  font-weight: 700 !important;
   font-family: 'Poppins', sans-serif !important;
 }
-
-/* ===== Force Remove All Dark Backgrounds ===== */
-
-body,
-.auth-wrapper,
-.main-wrapper,
-.dashboard-layout,
-.main-content,
-.content,
-.topbar,
-.header,
-.sidebar,
-.modal,
-.modal-content {
-  background: var(--light-bg) !important;
-  color: var(--dark-text) !important;
+.login-sub {
+  color: #6B7280 !important;
+}
+.login-hint {
+  color: #6B7280 !important;
+  border-top-color: #E2E8F0 !important;
+}
+.login-hint strong {
+  color: #2E2E2E !important;
+}
+.error-msg {
+  background: rgba(220,38,38,0.06) !important;
+  border-color: rgba(220,38,38,0.22) !important;
+  color: #DC2626 !important;
 }
 
-/* ===== Sidebar ===== */
-
-.sidebar {
-  background: #ffffff !important;
-  border-right: 1px solid #e5e7eb !important;
+/* ─────────────────────────────────────────────
+   STEP 4: FORM INPUTS
+   ───────────────────────────────────────────── */
+.inp {
+  background: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  color: #2E2E2E !important;
+  border-radius: 10px !important;
+}
+.inp:focus {
+  border-color: #0B4DBA !important;
+  box-shadow: 0 0 0 3px rgba(11,77,186,0.10) !important;
+  outline: none !important;
+}
+.inp::placeholder {
+  color: #A0ABBF !important;
+  opacity: 1 !important;
 }
 
-.sidebar a {
-  color: var(--dark-text) !important;
+.filter-inp {
+  background: #F4F7FC !important;
+  border: 1.5px solid #E2E8F0 !important;
+  color: #2E2E2E !important;
 }
-
-.sidebar a:hover {
-  background: rgba(11, 77, 186, 0.08) !important;
-  color: var(--primary-blue) !important;
-}
-
-/* ===== Logo ===== */
-
-.sidebar h1,
-.logo,
-.brand {
-  color: var(--primary-blue) !important;
-  font-weight: 800 !important;
-  text-transform: uppercase;
-}
-
-/* ===== Cards ===== */
-
-.card,
-div[class*="card"] {
-  background: #ffffff !important;
-  border-radius: 16px !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
-  border: 1px solid #eef2f7 !important;
-}
-
-/* ===== Inputs ===== */
-
-input,
-textarea,
-select {
-  background: #ffffff !important;
-  border: 1px solid #d1d5db !important;
-  color: var(--dark-text) !important;
-  border-radius: 8px !important;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--primary-blue) !important;
-  box-shadow: 0 0 0 3px rgba(11, 77, 186, 0.1) !important;
+.filter-inp:focus {
+  border-color: #0B4DBA !important;
+  box-shadow: 0 0 0 3px rgba(11,77,186,0.08) !important;
   outline: none !important;
 }
 
-/* ===== Buttons ===== */
+.search-inp {
+  background: #F4F7FC !important;
+  border: 1.5px solid #E2E8F0 !important;
+  color: #2E2E2E !important;
+}
+.search-inp:focus {
+  border-color: #0B4DBA !important;
+  box-shadow: 0 0 0 3px rgba(11,77,186,0.08) !important;
+  outline: none !important;
+}
+.search-inp::placeholder { color: #A0ABBF !important; }
+.search-icon { color: #A0ABBF !important; }
 
-button,
-.btn {
-  background: var(--primary-gradient) !important;
+.pw-toggle { color: #6B7280 !important; }
+.pw-toggle:hover { color: #0B4DBA !important; }
+
+/* ─────────────────────────────────────────────
+   STEP 5: BUTTONS
+   ───────────────────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 16px rgba(11,77,186,0.28) !important;
   border: none !important;
-  color: white !important;
+}
+.btn-primary:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 8px 28px rgba(11,77,186,0.36) !important;
+}
+.btn-primary:active { transform: translateY(0) !important; }
+
+.btn-ghost {
+  background: transparent !important;
+  color: #6B7280 !important;
+  border: 1.5px solid #E2E8F0 !important;
+}
+.btn-ghost:hover {
+  border-color: #0B4DBA !important;
+  color: #0B4DBA !important;
+  background: rgba(11,77,186,0.05) !important;
+}
+
+.btn-danger-soft {
+  background: rgba(220,38,38,0.08) !important;
+  color: #DC2626 !important;
+  border: 1.5px solid rgba(220,38,38,0.22) !important;
+}
+.btn-danger-soft:hover { background: rgba(220,38,38,0.14) !important; }
+
+/* ─────────────────────────────────────────────
+   STEP 6: SIDEBAR
+   ───────────────────────────────────────────── */
+.sidebar {
+  background: #FFFFFF !important;
+  border-right: 1.5px solid #E2E8F0 !important;
+  box-shadow: 2px 0 16px rgba(11,77,186,0.06) !important;
+}
+.sidebar-brand {
+  border-bottom-color: #E2E8F0 !important;
+  background: #FFFFFF !important;
+}
+.sidebar-user {
+  background: linear-gradient(135deg,
+    rgba(11,77,186,0.06) 0%,
+    rgba(200,109,215,0.06) 100%) !important;
+  border-bottom-color: #E2E8F0 !important;
+}
+.su-name { color: #2E2E2E !important; }
+.su-role.admin {
+  background: linear-gradient(135deg, #0B4DBA, #C86DD7) !important;
+  color: #FFFFFF !important;
+}
+.su-role.member {
+  background: rgba(8,145,178,0.12) !important;
+  color: #0891B2 !important;
+}
+.nav-section { color: #A0ABBF !important; }
+
+.nav-item {
+  color: #6B7280 !important;
+  border-color: transparent !important;
+}
+.nav-item:hover {
+  background: rgba(11,77,186,0.06) !important;
+  color: #0B4DBA !important;
+  border-color: transparent !important;
+}
+.nav-item.active {
+  background: rgba(11,77,186,0.08) !important;
+  color: #0B4DBA !important;
+  border-color: rgba(11,77,186,0.15) !important;
   font-weight: 600 !important;
-  border-radius: 8px !important;
+}
+.nav-item.active::before {
+  background: linear-gradient(180deg, #0B4DBA, #C86DD7) !important;
+}
+.sidebar-footer { border-top-color: #E2E8F0 !important; }
+.logout-btn { color: #DC2626 !important; }
+.logout-btn:hover {
+  background: rgba(220,38,38,0.06) !important;
+  border-color: rgba(220,38,38,0.18) !important;
 }
 
-button:hover {
-  opacity: 0.9;
+/* ─────────────────────────────────────────────
+   STEP 7: AVATARS
+   ───────────────────────────────────────────── */
+.avatar {
+  background: linear-gradient(135deg, #0B4DBA, #C86DD7) !important;
+  color: #FFFFFF !important;
+}
+.avatar-admin {
+  background: linear-gradient(135deg, #0B4DBA, #C86DD7) !important;
+  color: #FFFFFF !important;
+}
+.avatar-member {
+  background: linear-gradient(135deg, #0891B2, #16A34A) !important;
+  color: #FFFFFF !important;
 }
 
-/* ===== Dashboard Header ===== */
-
-.dashboard-header {
-  background: #ffffff !important;
-  border-bottom: 1px solid #e5e7eb !important;
+/* ─────────────────────────────────────────────
+   STEP 8: TOPBAR
+   ───────────────────────────────────────────── */
+.topbar {
+  background: rgba(255,255,255,0.94) !important;
+  border-bottom: 1.5px solid #E2E8F0 !important;
+  box-shadow: 0 2px 10px rgba(11,77,186,0.06) !important;
+}
+.topbar-title {
+  color: #2E2E2E !important;
+  font-weight: 700 !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+.menu-toggle {
+  border-color: #E2E8F0 !important;
+  color: #2E2E2E !important;
+  background: transparent !important;
+}
+.menu-toggle:hover {
+  border-color: #0B4DBA !important;
+  color: #0B4DBA !important;
 }
 
-/* ===== Modal Fix ===== */
-
-.modal-content {
-  background: #ffffff !important;
-  border-radius: 16px !important;
+/* ─────────────────────────────────────────────
+   STEP 9: PAGES & MAIN CONTENT
+   ───────────────────────────────────────────── */
+.main-content {
+  background: #F4F7FC !important;
 }
+.page {
+  background: transparent !important;
+}
+
+/* ─────────────────────────────────────────────
+   STEP 10: WELCOME BANNER
+   ───────────────────────────────────────────── */
+.welcome-banner {
+  background: linear-gradient(135deg, #0B4DBA 0%, #C86DD7 100%) !important;
+  border: none !important;
+  box-shadow: 0 8px 28px rgba(11,77,186,0.24) !important;
+}
+.welcome-banner::before {
+  background: rgba(255,255,255,0.08) !important;
+}
+.wb-text h2 {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+}
+.wb-text p { color: rgba(255,255,255,0.82) !important; }
+.wb-badge  { opacity: 0.80 !important; }
+
+/* ─────────────────────────────────────────────
+   STEP 11: STAT CARDS
+   ───────────────────────────────────────────── */
+.stat-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 2px 10px rgba(11,77,186,0.06) !important;
+}
+.stat-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 28px rgba(11,77,186,0.12) !important;
+}
+.stat-label { color: #6B7280 !important; }
+.stat-sub   { color: #6B7280 !important; }
+
+.stat-card.c-complete   .stat-value { color: #16A34A !important; }
+.stat-card.c-progress   .stat-value { color: #0891B2 !important; }
+.stat-card.c-ongoing    .stat-value { color: #D97706 !important; }
+.stat-card.c-incomplete .stat-value { color: #DC2626 !important; }
+.stat-card.c-total      .stat-value { color: #0B4DBA !important; }
+.stat-card.c-team       .stat-value { color: #C86DD7 !important; }
+
+.stat-card.c-complete::after   { background: #16A34A !important; }
+.stat-card.c-progress::after   { background: #0891B2 !important; }
+.stat-card.c-ongoing::after    { background: #D97706 !important; }
+.stat-card.c-incomplete::after { background: #DC2626 !important; }
+.stat-card.c-total::after      { background: #0B4DBA !important; }
+.stat-card.c-team::after       { background: #C86DD7 !important; }
+
+/* ─────────────────────────────────────────────
+   STEP 12: CARD COMPONENT
+   ───────────────────────────────────────────── */
+.card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 2px 10px rgba(11,77,186,0.05) !important;
+}
+.card-header {
+  background: #FFFFFF !important;
+  border-bottom-color: #E2E8F0 !important;
+}
+.card-title {
+  color: #2E2E2E !important;
+  font-weight: 700 !important;
+}
+
+/* ─────────────────────────────────────────────
+   STEP 13: TABLE
+   ───────────────────────────────────────────── */
+thead th {
+  color: #6B7280 !important;
+  background: #F4F7FC !important;
+  border-bottom-color: #E2E8F0 !important;
+}
+tbody tr { border-bottom-color: #F1F5FB !important; }
+tbody tr:hover { background: rgba(11,77,186,0.03) !important; }
+tbody td { color: #2E2E2E !important; }
+.task-title-main { color: #2E2E2E !important; }
+.task-title-desc { color: #6B7280 !important; }
+.date-cell       { color: #6B7280 !important; }
+.mem-name        { color: #2E2E2E !important; }
+.mem-user        { color: #6B7280 !important; }
+
+/* ─────────────────────────────────────────────
+   STEP 14: STATUS TAGS
+   ───────────────────────────────────────────── */
+.s-completed  { background: rgba(22,163,74,0.10)  !important; color: #16A34A !important; }
+.s-inprogress { background: rgba(8,145,178,0.10)  !important; color: #0891B2 !important; }
+.s-ongoing    { background: rgba(217,119,6,0.10)  !important; color: #D97706 !important; }
+.s-incomplete { background: rgba(220,38,38,0.10)  !important; color: #DC2626 !important; }
+
+.s-completed  .status-dot { background: #16A34A !important; box-shadow: 0 0 5px rgba(22,163,74,0.5)  !important; }
+.s-inprogress .status-dot { background: #0891B2 !important; box-shadow: 0 0 5px rgba(8,145,178,0.5)  !important; }
+.s-ongoing    .status-dot { background: #D97706 !important; box-shadow: 0 0 5px rgba(217,119,6,0.5)  !important; }
+.s-incomplete .status-dot { background: #DC2626 !important; box-shadow: 0 0 5px rgba(220,38,38,0.5)  !important; }
+
+/* ─────────────────────────────────────────────
+   STEP 15: ICON ACTION BUTTONS
+   ───────────────────────────────────────────── */
+.icon-btn {
+  background: transparent !important;
+  border: 1.5px solid #E2E8F0 !important;
+  color: #6B7280 !important;
+}
+.icon-btn:hover {
+  background: rgba(11,77,186,0.07) !important;
+  color: #0B4DBA !important;
+  border-color: rgba(11,77,186,0.28) !important;
+}
+.icon-btn.del:hover {
+  background: rgba(220,38,38,0.08) !important;
+  color: #DC2626 !important;
+  border-color: rgba(220,38,38,0.28) !important;
+}
+
+/* ─────────────────────────────────────────────
+   STEP 16: TAG CHIP
+   ───────────────────────────────────────────── */
+.tag {
+  background: rgba(11,77,186,0.10) !important;
+  color: #0B4DBA !important;
+}
+
+/* ─────────────────────────────────────────────
+   STEP 17: EMPTY STATE
+   ───────────────────────────────────────────── */
+.empty-text { color: #6B7280 !important; }
+.empty-sub  { color: #A0ABBF !important; }
+.empty-icon svg { stroke: #A0ABBF !important; }
+
+/* ─────────────────────────────────────────────
+   STEP 18: MODAL
+   ───────────────────────────────────────────── */
+.modal-overlay {
+  background: rgba(11,77,186,0.18) !important;
+  backdrop-filter: blur(6px) !important;
+}
+.modal {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 40px 100px rgba(11,77,186,0.18) !important;
+}
+.modal-header {
+  background: #FFFFFF !important;
+  border-bottom-color: #E2E8F0 !important;
+}
+.modal-title {
+  color: #2E2E2E !important;
+  font-weight: 700 !important;
+}
+.modal-close {
+  background: transparent !important;
+  border: 1.5px solid #E2E8F0 !important;
+  color: #6B7280 !important;
+}
+.modal-close:hover {
+  background: #F4F7FC !important;
+  color: #2E2E2E !important;
+  border-color: #0B4DBA !important;
+}
+.modal-body   { background: #FFFFFF !important; }
+.modal-footer {
+  background: #FFFFFF !important;
+  border-top-color: #E2E8F0 !important;
+}
+.detail-label { color: #6B7280 !important; }
+.detail-value { color: #2E2E2E !important; }
+.comment-box {
+  background: #F4F7FC !important;
+  border-color: #E2E8F0 !important;
+  color: #2E2E2E !important;
+}
+.divider { background: #E2E8F0 !important; }
+
+/* ─────────────────────────────────────────────
+   STEP 19: TOAST
+   ───────────────────────────────────────────── */
+.toast {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #2E2E2E !important;
+  box-shadow: 0 8px 24px rgba(11,77,186,0.12) !important;
+}
+.toast.success { border-left: 3px solid #16A34A !important; }
+.toast.error   { border-left: 3px solid #DC2626 !important; }
+.toast.info    { border-left: 3px solid #0B4DBA !important; }
+
+/* ─────────────────────────────────────────────
+   STEP 20: MOBILE OVERLAY
+   ───────────────────────────────────────────── */
+.sidebar-overlay {
+  background: rgba(11,77,186,0.15) !important;
+}
+
+/* ─────────────────────────────────────────────
+   STEP 21: SCROLLBAR
+   ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #F4F7FC; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0B4DBA, #C86DD7);
+  border-radius: 10px;
+}
+
+/* ─────────────────────────────────────────────
+   STEP 22: OVERRIDE FRAUNCES FONT
+   index.html uses Fraunces serif for headings —
+   manager spec requires Poppins everywhere.
+   ───────────────────────────────────────────── */
+.topbar-title,
+.card-title,
+.modal-title,
+.wb-text h2,
+.login-heading,
+.brand-name,
+.stat-value,
+.empty-text {
+  font-family: 'Poppins', 'Montserrat', 'Inter', Arial, sans-serif !important;
+}
+
+/* ─────────────────────────────────────────────
+   STEP 23: RESPONSIVE
+   ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .sidebar {
+    box-shadow: 4px 0 24px rgba(11,77,186,0.10) !important;
+  }
+  body,
+  .main-content,
+  .page {
+    background: #F4F7FC !important;
+    color: #2E2E2E !important;
+  }
+}
+
+
+
