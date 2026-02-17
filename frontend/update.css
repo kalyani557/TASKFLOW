@@ -1,0 +1,121 @@
+/* =====================================
+   FULL CORPORATE LIGHT THEME OVERRIDE
+   ===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+:root {
+  --primary-blue: #0B4DBA;
+  --primary-purple: #C86DD7;
+  --white: #ffffff;
+  --dark-text: #2E2E2E;
+  --light-bg: #F4F7FC;
+  --primary-gradient: linear-gradient(to right, #0B4DBA, #C86DD7);
+}
+
+/* ===== Global Reset ===== */
+
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* ===== Force Remove All Dark Backgrounds ===== */
+
+body,
+.auth-wrapper,
+.main-wrapper,
+.dashboard-layout,
+.main-content,
+.content,
+.topbar,
+.header,
+.sidebar,
+.modal,
+.modal-content {
+  background: var(--light-bg) !important;
+  color: var(--dark-text) !important;
+}
+
+/* ===== Sidebar ===== */
+
+.sidebar {
+  background: #ffffff !important;
+  border-right: 1px solid #e5e7eb !important;
+}
+
+.sidebar a {
+  color: var(--dark-text) !important;
+}
+
+.sidebar a:hover {
+  background: rgba(11, 77, 186, 0.08) !important;
+  color: var(--primary-blue) !important;
+}
+
+/* ===== Logo ===== */
+
+.sidebar h1,
+.logo,
+.brand {
+  color: var(--primary-blue) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+}
+
+/* ===== Cards ===== */
+
+.card,
+div[class*="card"] {
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #eef2f7 !important;
+}
+
+/* ===== Inputs ===== */
+
+input,
+textarea,
+select {
+  background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  color: var(--dark-text) !important;
+  border-radius: 8px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary-blue) !important;
+  box-shadow: 0 0 0 3px rgba(11, 77, 186, 0.1) !important;
+  outline: none !important;
+}
+
+/* ===== Buttons ===== */
+
+button,
+.btn {
+  background: var(--primary-gradient) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ===== Dashboard Header ===== */
+
+.dashboard-header {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+/* ===== Modal Fix ===== */
+
+.modal-content {
+  background: #ffffff !important;
+  border-radius: 16px !important;
+}
